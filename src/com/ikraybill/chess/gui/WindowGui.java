@@ -17,6 +17,7 @@ public class WindowGui extends JFrame{
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setLayout(new FlowLayout(FlowLayout.CENTER));
         setSize(windowWidth,windowHeight);
         add(new ChessGui());
@@ -25,6 +26,6 @@ public class WindowGui extends JFrame{
 
     public synchronized void paint(Graphics g){
         g.clearRect(0,0, windowWidth, windowHeight);
-        System.out.println("Hey!");
+        //System.out.println("Hey!");
     }
 }

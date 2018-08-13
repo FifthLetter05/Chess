@@ -7,14 +7,7 @@ import com.ikraybill.chess.game.Player;
  */
 public class Pawn extends Piece{
 
-    int texX = 1667;
-
-    public Pawn(int x, int y, Player player) {
-        super(x, y, player);
-    }
-
-    @Override
-    public void draw() {
-        //chessIcons
+    public Pawn(int posX, int posY, Player player) {
+        super(posX, posY, player, 0);
     }
 }
