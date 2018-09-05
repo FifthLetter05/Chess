@@ -7,7 +7,7 @@ import java.util.Map;
 public class DebugHud {
     private String renderedText;
     private Map<String, Object> content;
-    private int fontSize;
+    private int fontSize = 16;
 
     public DebugHud(){
         content = new HashMap<>();
@@ -30,10 +30,8 @@ public class DebugHud {
         }
     }
 
-    //TODO
     public void draw(Graphics g){
         int i = 1;
-        System.out.println(i);
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, fontSize));
         for (Map.Entry<String, Object> me: content.entrySet()) {
             i++;
