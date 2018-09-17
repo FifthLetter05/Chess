@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage
  */
 object Reference {
     const val TITLE = "Chess"
-    const val CHESS_ICON_IMG_W = 2000
-    const val CHESS_ICON_IMG_H = 667
+    const val CHESS_ICON_IMG_W = 1440
+    const val CHESS_ICON_IMG_H = 580
     const val CHESS_ICON_IMG_COLS = 6
     const val CHESS_ICON_IMG_ROWS = 2
     val CHESS_ICON_W = CHESS_ICON_IMG_W / CHESS_ICON_IMG_COLS
