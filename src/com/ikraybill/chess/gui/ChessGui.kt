@@ -15,6 +15,7 @@ import java.util.LinkedList
 
 import com.ikraybill.chess.shared.Reference.boardSize
 import com.ikraybill.chess.shared.Reference.chessIcons
+import com.ikraybill.chess.shared.Reference.debugHud
 import com.ikraybill.chess.shared.Reference.tileSize
 
 /**
@@ -38,8 +39,6 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
     private val pieces = LinkedList<Piece>()
     private val white: Player
     private val black: Player
-
-    private val debugHud = DebugHud()
 
     private var offsetX: Int = 0
     private var offsetY: Int = 0
@@ -227,10 +226,11 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
             if (piece.isDragging) {
                 piece.moveOkay = true
                 for (otherPiece in pieces) {
-                    if (mouseBoardX == otherPiece.boardX && mouseBoardY == otherPiece.boardY && !piece.checkMove(mouseBoardX, mouseBoardY)) {
+                    if (mouseBoardX == otherPiece.boardX && mouseBoardY == otherPiece.boardY) {
                         piece.moveOkay = false
                     }
                 }
+                debugHud.addLine("Move Checked: ", piece.checkMove(mouseBoardX, mouseBoardY))
                 if (piece.moveOkay) {
                     piece.boardX = mouseBoardX
                     piece.boardY = mouseBoardY
