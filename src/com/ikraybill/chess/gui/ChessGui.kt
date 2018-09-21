@@ -32,6 +32,8 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
 
     private var mouseX: Int = 0
     private var mouseY: Int = 0
+    private var mouseBoardX: Int = 0
+    private var mouseBoardY: Int = 0
 
     private val pieces = LinkedList<Piece>()
     private val white: Player
@@ -148,8 +150,17 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
     }
 
     fun drawPieces(g: Graphics?) {
-        for (piece in pieces) {
-            piece.draw(g!!, this)
+        if(dragging) {
+            for (piece in pieces) {
+                if (!piece.isDragging) piece.draw(g!!, this)
+            }
+            for (piece in pieces) {
+                if (piece.isDragging) piece.draw(g!!, this)
+            }
+        } else {
+            for (piece in pieces) {
+                piece.draw(g!!, this)
+            }
         }
     }
 
@@ -198,6 +209,8 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
             if (piece.posX < mouseX && mouseX < piece.posX + Reference.tileSize && piece.posY < mouseY && mouseY < piece.posY + Reference.tileSize) {
                 piece.isDragging = true
                 dragging = true
+
+                //determines offset for position of piece relative to mouse while dragging
                 offsetX = mouseX - piece.posX
                 offsetY = mouseY - piece.posY
                 piece.posX = mouseX - offsetX
@@ -210,20 +223,20 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
 
     override fun mouseReleased(e: MouseEvent) {
         dragging = false
-        var moveOkay = true
         for (piece in pieces) {
             if (piece.isDragging) {
+                piece.moveOkay = true
                 for (otherPiece in pieces) {
-                    if (mouseX / Reference.tileSize == otherPiece.boardX && mouseY / Reference.tileSize == otherPiece.boardY) {
-                        moveOkay = false
+                    if (mouseBoardX == otherPiece.boardX && mouseBoardY == otherPiece.boardY && !piece.checkMove(mouseBoardX, mouseBoardY)) {
+                        piece.moveOkay = false
                     }
                 }
-                if (moveOkay) {
-                    piece.boardX = mouseX / Reference.tileSize
-                    piece.boardY = mouseY / Reference.tileSize
+                if (piece.moveOkay) {
+                    piece.boardX = mouseBoardX
+                    piece.boardY = mouseBoardY
 
                 }
-                debugHud.addLine("Move Okay", moveOkay)
+                debugHud.addLine("Move Okay", piece.moveOkay)
                 piece.resetToGrid()
                 piece.isDragging = false
                 debugHud.removeLine("Dragging")
@@ -234,6 +247,8 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
     override fun mouseMoved(e: MouseEvent) {
         mouseX = e.x
         mouseY = e.y
+        mouseBoardX = mouseX / Reference.tileSize
+        mouseBoardY = mouseY / Reference.tileSize
         //System.out.println("Position: " + mouseX + ", " + mouseY);
         //repaint();
     }

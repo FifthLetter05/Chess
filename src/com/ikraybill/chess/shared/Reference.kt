@@ -16,4 +16,5 @@ object Reference {
     var chessIcons: BufferedImage? = null
     var boardSize = 1000
     var tileSize = boardSize / 8
+    var round = 1
 }
