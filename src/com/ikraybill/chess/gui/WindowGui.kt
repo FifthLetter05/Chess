@@ -1,6 +1,7 @@
 package com.ikraybill.chess.gui
 
 import com.ikraybill.chess.shared.Reference
+import com.ikraybill.chess.shared.Reference.boardSize
 
 import javax.swing.*
 import java.awt.*
@@ -18,8 +19,9 @@ class WindowGui : JFrame(Reference.TITLE) {
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         isResizable = false
         layout = FlowLayout(FlowLayout.CENTER)
-        setSize(windowWidth, windowHeight)
+        setSize(boardSize + 200, boardSize)
         add(ChessGui())
+        add(DebugHud())
         pack()
     }
 

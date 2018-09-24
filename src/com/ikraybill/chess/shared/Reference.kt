@@ -1,5 +1,6 @@
 package com.ikraybill.chess.shared
 
+import com.ikraybill.chess.gui.DebugHud
 import java.awt.image.BufferedImage
 
 /**
@@ -13,7 +14,9 @@ object Reference {
     const val CHESS_ICON_IMG_ROWS = 2
     val CHESS_ICON_W = 191
     val CHESS_ICON_H = 200
+    val debugHud = DebugHud()
     var chessIcons: BufferedImage? = null
     var boardSize = 1000
     var tileSize = boardSize / 8
+    var round = 1
 }

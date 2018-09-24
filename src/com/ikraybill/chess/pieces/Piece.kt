@@ -17,6 +17,7 @@ abstract class Piece(var boardX: Int, var boardY: Int, player: Player, ID: Int) 
     var posY: Int = boardY * tileSize
     private val icon: Image? = Reference.chessIcons?.getSubimage((5 - ID) * Reference.CHESS_ICON_W + 155, player.color * (Reference.CHESS_ICON_H + 40) + 60, Reference.CHESS_ICON_W, Reference.CHESS_ICON_H)
     var isDragging: Boolean = false
+    var moveOkay: Boolean = false
 
     fun resetToGrid() {
         if (this.posX != boardX * tileSize) posX = boardX * tileSize
@@ -26,4 +27,6 @@ abstract class Piece(var boardX: Int, var boardY: Int, player: Player, ID: Int) 
     fun draw(g: Graphics, observer: ImageObserver) {
         g.drawImage(icon, posX, posY, tileSize, tileSize, observer)
     }
+
+    abstract fun checkMove(posX: Int, posY: Int): Boolean
 }
