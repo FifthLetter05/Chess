@@ -6,10 +6,10 @@ import com.ikraybill.chess.shared.Reference.debugHud
 /**
  * Created by iek2d on 4/14/2017.
  */
-class Pawn(posX: Int, posY: Int, player: Player) : Piece(posX, posY, player, 0) {
-    override fun checkMove(posX: Int, posY: Int): Boolean {
-        debugHud.addLine("checked position: ", posX.toString() + ", " + posY)
-        if(posX == this.posX && posY == this.posY + 1){
+class Pawn(boardX: Int, boardY: Int, player: Player) : Piece(boardX, boardY, player, 0) {
+    override fun checkMove(boardX: Int, boardY: Int): Boolean {
+        debugHud.addLine("checked position", boardX.toString() + ", " + boardY)
+        if(boardX == this.boardX && boardY == this.boardY + if (this.player.color == 0) 1 else -1){
             return true
         }
         return false

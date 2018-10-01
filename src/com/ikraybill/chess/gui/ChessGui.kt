@@ -55,7 +55,7 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
             e.printStackTrace()
         }
 
-        preferredSize = Dimension(Reference.boardSize, Reference.boardSize)
+        preferredSize = Dimension(if (Reference.DEBUG) Reference.boardSize + 200 else Reference.boardSize , Reference.boardSize)
         this.addMouseListener(this)
         this.addMouseMotionListener(this)
 
@@ -179,7 +179,9 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
 
         drawBoard(g)
         drawPieces(g)
-        drawHud(g)
+        if (Reference.DEBUG) {
+            drawHud(g)
+        }
 
     }
 
@@ -230,7 +232,9 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
                         piece.moveOkay = false
                     }
                 }
-                debugHud.addLine("Move Checked: ", piece.checkMove(mouseBoardX, mouseBoardY))
+                if (!piece.checkMove(mouseBoardX, mouseBoardY)) {
+                    piece.moveOkay = false
+                }
                 if (piece.moveOkay) {
                     piece.boardX = mouseBoardX
                     piece.boardY = mouseBoardY
@@ -249,13 +253,14 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
         mouseY = e.y
         mouseBoardX = mouseX / Reference.tileSize
         mouseBoardY = mouseY / Reference.tileSize
-        //System.out.println("Position: " + mouseX + ", " + mouseY);
-        //repaint();
+        //println("Position: $mouseX, $mouseY")
     }
 
     override fun mouseDragged(e: MouseEvent) {
         mouseX = e.x
         mouseY = e.y
+        mouseBoardX = mouseX / Reference.tileSize
+        mouseBoardY = mouseY / Reference.tileSize
 
         for (piece in pieces) {
 

@@ -14,14 +14,12 @@ class WindowGui : JFrame(Reference.TITLE) {
     private val windowHeight = 640
 
     init {
-
         isVisible = true
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         isResizable = false
         layout = FlowLayout(FlowLayout.CENTER)
-        setSize(boardSize + 200, boardSize)
+        setSize(boardSize, boardSize)
         add(ChessGui())
-        add(DebugHud())
         pack()
     }
 

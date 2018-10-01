@@ -1,10 +1,11 @@
 package com.ikraybill.chess.gui
 
+import com.ikraybill.chess.shared.Reference
 import java.awt.*
 import java.util.HashMap
 import javax.swing.JPanel
 
-class DebugHud: JPanel(true) {
+class DebugHud {
     private var renderedText: String? = null
     private val content: MutableMap<String, Any>
 
@@ -35,20 +36,7 @@ class DebugHud: JPanel(true) {
         g.font = Font(Font.SANS_SERIF, Font.BOLD, fontSize)
         for ((key, value) in content) {
             i++
-            g.drawString(key + ": " + value.toString(), 10, fontSize * i)
-        }
-    }
-
-    @Synchronized
-    override fun paint(g: Graphics){
-        super.paint(g)
-        var i = 1
-        val fontSize = 16
-        g.color = Color(70, 73, 255)
-        g.font = Font(Font.SANS_SERIF, Font.BOLD, fontSize)
-        for ((key, value) in content) {
-            i++
-            g.drawString(key + ": " + value.toString(), 10, fontSize * i)
+            g.drawString(key + ": " + value.toString(), 10 + Reference.boardSize, fontSize * i)
         }
     }
 }

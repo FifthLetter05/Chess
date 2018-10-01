@@ -12,10 +12,10 @@ import com.ikraybill.chess.shared.Reference.tileSize
 /**
  * The base piece class that all other pieces inherit from
  */
-abstract class Piece(var boardX: Int, var boardY: Int, player: Player, ID: Int) {
+abstract class Piece(var boardX: Int, var boardY: Int, var player: Player, ID: Int) {
     var posX: Int = boardX * tileSize
     var posY: Int = boardY * tileSize
-    private val icon: Image? = Reference.chessIcons?.getSubimage((5 - ID) * Reference.CHESS_ICON_W + 155, player.color * (Reference.CHESS_ICON_H + 40) + 60, Reference.CHESS_ICON_W, Reference.CHESS_ICON_H)
+    private val icon: Image? = Reference.chessIcons?.getSubimage((5 - ID) * Reference.CHESS_ICON_W + 153, player.color * (Reference.CHESS_ICON_H + 40) + 60, Reference.CHESS_ICON_W, Reference.CHESS_ICON_H)
     var isDragging: Boolean = false
     var moveOkay: Boolean = false
 
