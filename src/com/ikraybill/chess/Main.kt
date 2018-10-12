@@ -1,10 +1,7 @@
 package com.ikraybill.chess
 
-import com.ikraybill.chess.gui.ChessGui
 import com.ikraybill.chess.gui.WindowGui
-import com.ikraybill.chess.shared.Utility
-
-import javax.swing.*
+import javax.swing.SwingUtilities
 
 /**
  * The class that starts it all
