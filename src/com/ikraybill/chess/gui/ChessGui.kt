@@ -55,7 +55,7 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
             e.printStackTrace()
         }
 
-        preferredSize = Dimension(if (Reference.DEBUG) Reference.boardSize + 200 else Reference.boardSize , Reference.boardSize)
+        preferredSize = Dimension(if (Reference.DEBUG) Reference.boardSize + Reference.boardSize / 4 else Reference.boardSize , Reference.boardSize)
         this.addMouseListener(this)
         this.addMouseMotionListener(this)
 
