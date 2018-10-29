@@ -17,7 +17,7 @@ object Reference {
     val CHESS_ICON_H = 200
     val debugHud = DebugHud()
     var chessIcons: BufferedImage? = null
-    var boardSize = 1000
+    var boardSize = 800
     var tileSize = boardSize / 8
-    var turn = 1
+    var turn = 0
 }

@@ -10,7 +10,7 @@ class Pawn(boardX: Int, boardY: Int, player: Player) : Piece(boardX, boardY, pla
     override fun checkMove(boardX: Int, boardY: Int): Boolean {
         debugHud.addLine("checked position", boardX.toString() + ", " + boardY)
         if(boardX == this.boardX && boardY == this.boardY + if (this.player == Player.WHITE) 1 else -1){
-            return true
+            return super.checkMove(boardX, boardY)
         }
         return false
     }

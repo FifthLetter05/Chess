@@ -8,6 +8,7 @@ import java.awt.*
 import java.awt.image.ImageObserver
 
 import com.ikraybill.chess.shared.Reference.tileSize
+import com.ikraybill.chess.shared.Reference.turn
 
 /**
  * The base piece class that all other pieces inherit from
@@ -28,5 +29,7 @@ abstract class Piece(var boardX: Int, var boardY: Int, var player: Player, ID: I
         g.drawImage(icon, posX, posY, tileSize, tileSize, observer)
     }
 
-    abstract fun checkMove(boardX: Int, boardY: Int): Boolean
+    open fun checkMove(boardX: Int, boardY: Int): Boolean {
+        return (turn % 2 == 0 && player == Player.WHITE) || (turn % 2 == 1 && player == Player.BLACK)
+    }
 }

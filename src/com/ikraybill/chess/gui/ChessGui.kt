@@ -223,7 +223,6 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
     }
 
     override fun mouseReleased(e: MouseEvent) {
-        dragging = false
         for (piece in pieces) {
             if (piece.isDragging) {
                 piece.moveOkay = true
@@ -238,12 +237,15 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
                 if (piece.moveOkay) {
                     piece.boardX = mouseBoardX
                     piece.boardY = mouseBoardY
+                    Reference.turn++
+                    debugHud.addLine("Turn", Reference.turn)
 
                 }
                 debugHud.addLine("Move Okay", piece.moveOkay)
                 piece.resetToGrid()
                 piece.isDragging = false
-                debugHud.removeLine("Dragging")
+                dragging = false
+                debugHud.addLine("Dragging", dragging)
             }
         }
     }
