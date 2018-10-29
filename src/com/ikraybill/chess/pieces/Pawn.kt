@@ -9,7 +9,7 @@ import com.ikraybill.chess.shared.Reference.debugHud
 class Pawn(boardX: Int, boardY: Int, player: Player) : Piece(boardX, boardY, player, 0) {
     override fun checkMove(boardX: Int, boardY: Int): Boolean {
         debugHud.addLine("checked position", boardX.toString() + ", " + boardY)
-        if(boardX == this.boardX && boardY == this.boardY + if (this.player.color == 0) 1 else -1){
+        if(boardX == this.boardX && boardY == this.boardY + if (this.player == Player.WHITE) 1 else -1){
             return true
         }
         return false

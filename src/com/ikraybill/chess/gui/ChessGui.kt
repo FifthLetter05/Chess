@@ -59,8 +59,8 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
         this.addMouseListener(this)
         this.addMouseMotionListener(this)
 
-        white = Player(0)
-        black = Player(1)
+        white = Player.WHITE
+        black = Player.BLACK
 
         pieces.add(Rook(0, 0, white))
         pieces.add(Knight(1, 0, white))

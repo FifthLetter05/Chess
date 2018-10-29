@@ -15,7 +15,7 @@ import com.ikraybill.chess.shared.Reference.tileSize
 abstract class Piece(var boardX: Int, var boardY: Int, var player: Player, ID: Int) {
     var posX: Int = boardX * tileSize
     var posY: Int = boardY * tileSize
-    private val icon: Image? = Reference.chessIcons?.getSubimage((5 - ID) * Reference.CHESS_ICON_W + 153, player.color * (Reference.CHESS_ICON_H + 40) + 60, Reference.CHESS_ICON_W, Reference.CHESS_ICON_H)
+    private val icon: Image? = Reference.chessIcons?.getSubimage((5 - ID) * Reference.CHESS_ICON_W + 153, (if (player == Player.WHITE) 0 else 1) * (Reference.CHESS_ICON_H + 40) + 60, Reference.CHESS_ICON_W, Reference.CHESS_ICON_H)
     var isDragging: Boolean = false
     var moveOkay: Boolean = false
 
@@ -28,5 +28,5 @@ abstract class Piece(var boardX: Int, var boardY: Int, var player: Player, ID: I
         g.drawImage(icon, posX, posY, tileSize, tileSize, observer)
     }
 
-    abstract fun checkMove(posX: Int, posY: Int): Boolean
+    abstract fun checkMove(boardX: Int, boardY: Int): Boolean
 }
