@@ -53,48 +53,27 @@ class ChessBoard {
 
     fun draw(g: Graphics?) {
         g!!.color = Color(77, 49, 31)
-        run {
-            var i = 0
-            while (i < 8) {
-                var j = 0
-                while (j < 8) {
-                    g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
-                    j += 2
-                }
-                i += 2
+        for (i in 0..6 step 2) {
+            for (j in 0..6 step 2) {
+                g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
             }
         }
-        run {
-            var i = 1
-            while (i < 9) {
-                var j = 1
-                while (j < 9) {
-                    g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
-                    j += 2
-                }
-                i += 2
+
+        for (i in 1..7 step 2) {
+            for (j in 1..7 step 2) {
+                g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
             }
         }
         g.color = Color(217, 155, 114)
-        run {
-            var i = 1
-            while (i < 9) {
-                var j = 0
-                while (j < 8) {
-                    g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
-                    j += 2
-                }
-                i += 2
+        for (i in 1..7 step 2) {
+            for (j in 0..6 step 2) {
+                g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
             }
         }
-        var i = 0
-        while (i < 8) {
-            var j = 1
-            while (j < 9) {
+        for (i in 0..6 step 2) {
+            for (j in 1..7 step 2) {
                 g.fillRect(i * Reference.tileSize, j * Reference.tileSize, Reference.tileSize, Reference.tileSize)
-                j += 2
             }
-            i += 2
         }
     }
 }
