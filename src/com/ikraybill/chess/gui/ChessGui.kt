@@ -37,8 +37,6 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
     private var mouseBoardX: Int = 0
     private var mouseBoardY: Int = 0
 
-    @Deprecated("use chessBoard.pieces")
-    private var pieces = LinkedList<Piece>()
     private val chessBoard: ChessBoard
     private val white: Player
     private val black: Player
@@ -204,9 +202,8 @@ class ChessGui : JPanel(true), Runnable, MouseListener, MouseMotionListener {
             if (piece.isDragging) {
                 piece.posX = mouseX - offsetX
                 piece.posY = mouseY - offsetY
-                //System.out.println("dragging");
+                dragging = true
             }
-            if (piece.isDragging) dragging = true
         }
 
         //System.out.println("Dragged: " + mouseX + ", " + mouseY);
